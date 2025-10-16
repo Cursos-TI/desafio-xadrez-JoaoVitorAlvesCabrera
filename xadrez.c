@@ -53,5 +53,21 @@ int main() {
         contadorRainha++;
     } while (contadorRainha < movimentoRainha);
 
+
+    int movimentosCavalo = 1;  // Quantidade de movimentos em L
+    int passosBaixo = 2;       // Duas casas para baixo
+    int passosEsquerda = 1;    // Uma casa para esquerda
+
+        printf("Movimento do Cavalo:\n");
+    for (int i = 0; i < movimentosCavalo; i++) {
+    int contadorBaixo = 0;
+    while (contadorBaixo < passosBaixo) {
+        printf("Baixo\n");
+    contadorBaixo++;
+    }
+    // Movimento para a esquerda (1 vez)
+        printf("Esquerda\n");
+    }
+
     return 0;
 }
