@@ -1,73 +1,82 @@
 #include <stdio.h>
 
+// Função recursiva para o movimento da Torre (Direita)
+void moverTorre(int movimentosRestantes) {
+if (movimentosRestantes == 0) return;
+printf("Direita\n");
+moverTorre(movimentosRestantes - 1);
+}
+
+// Função recursiva para o movimento da Rainha (Esquerda)
+void moverRainha(int movimentosRestantes) {
+ if (movimentosRestantes == 0) return;
+printf("Esquerda\n");
+moverRainha(movimentosRestantes - 1);
+}
+
+// Função recursiva + loops aninhados para o movimento do Bispo (Diagonal: Cima Direita)
+void moverBispo(int movimentosVerticais, int movimentosHorizontais) {
+if (movimentosVerticais == 0) return;
+
+// Movimento vertical (Cima)
+printf("Cima\n");
+
+// Movimento horizontal (Direita) dentro do loop vertical
+for (int j = 0; j < movimentosHorizontais; j++) {
+printf("Direita\n");
+}
+
+moverBispo(movimentosVerticais - 1, movimentosHorizontais); // chamada recursiva
+}
+
 int main() {
-// Movimentação da Torre - 5 casas para a direita
-// Utiliza estrutura de repetição: for
+// ---------------- TORRE ----------------
+int movimentoTorre = 5;
+printf("Movimento da Torre:\n");
+moverTorre(movimentoTorre);
+printf("\n");
 
-//Explicação do Código
-//Torre:
-//Movimento: 5 casas para a direita.
-//Estrutura usada: for
-//A cada iteração, imprime "Direita".
+// ---------------- BISPO ----------------
+int movimentoVerticalBispo = 5;  // 5 movimentos na diagonal
+int movimentoHorizontalBispo = 1; // 1 passo horizontal por cada vertical
+printf("Movimento do Bispo:\n");
+moverBispo(movimentoVerticalBispo, movimentoHorizontalBispo);
+printf("\n");
 
-    int movimentoTorre = 5;
-    printf("Movimento da Torre:\n");
-    for (int i = 0; i < movimentoTorre; i++) {
-        printf("Direita\n");
-    }
+// ---------------- RAINHA ----------------
+int movimentoRainha = 8;
+printf("Movimento da Rainha:\n");
+moverRainha(movimentoRainha);
+printf("\n");
 
-    printf("\n");
+// ---------------- CAVALO ----------------
+//Cavalo se move em "L": 2 casas para cima, 1 casa para direita.
+//Utilizaremos dois loops aninhados para simular múltiplos movimentos,
+//com uso de break e continue.
 
-// Movimentação do Bispo - 5 casas na diagonal (cima + direita)
-// Utiliza estrutura de repetição: while
+int movimentosCavalo = 3; // Número de movimentos em "L"
 
-//Explicação do Código
-// Bispo:
-//Movimento: 5 casas na diagonal (subindo e para a direita).
-//Estrutura usada: while
-//A cada iteração, imprime "Cima Direita".
+printf("Movimento do Cavalo:\n");
 
-    int movimentoBispo = 5;
-    int contadorBispo = 0;
-    printf("Movimento do Bispo:\n");
-    while (contadorBispo < movimentoBispo) {
-        printf("Cima Direita\n");
-        contadorBispo++;
-    }
-    printf("\n");
+for (int i = 0; i < movimentosCavalo; i++) {
+// Simulando 2 movimentos para cima
+for (int j = 0; j < 2; j++) {
+if (j == 1 && i == 2) {
+// Exemplo de uso de continue: pular um movimento específico
+continue;
+}
+     printf("Cima\n");
+}
 
-// Movimentação da Rainha - 8 casas para a esquerda
-// Utiliza estrutura de repetição: do-while
-
-//Explicação do Código
-//Rainha:
-//Movimento: 8 casas para a esquerda.
-//Estrutura usada: do-while
-//A cada iteração, imprime "Esquerda".
-
-    int movimentoRainha = 8;
-    int contadorRainha = 0;
-    printf("Movimento da Rainha:\n");
-    do {
-        printf("Esquerda\n");
-        contadorRainha++;
-    } while (contadorRainha < movimentoRainha);
-
-
-    int movimentosCavalo = 1;  // Quantidade de movimentos em L
-    int passosBaixo = 2;       // Duas casas para baixo
-    int passosEsquerda = 1;    // Uma casa para esquerda
-
-        printf("Movimento do Cavalo:\n");
-    for (int i = 0; i < movimentosCavalo; i++) {
-    int contadorBaixo = 0;
-    while (contadorBaixo < passosBaixo) {
-        printf("Baixo\n");
-    contadorBaixo++;
-    }
-    // Movimento para a esquerda (1 vez)
-        printf("Esquerda\n");
-    }
+// Movimento para direita
+for (int k = 0; k < 1; k++) {
+if (i == 1) {
+ // Exemplo de uso de break: interrompe o movimento no 2º "L"
+break;
+}
+  printf("Direita\n");
+}
+}
 
     return 0;
 }
